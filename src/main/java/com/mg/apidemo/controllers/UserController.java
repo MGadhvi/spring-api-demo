@@ -29,4 +29,6 @@ public class UserController {
     public UserEntity getUserById(@PathVariable Integer id) throws UserNotFoundException {
         return userEntityRepository.getUserEntityById(id).orElseThrow(() -> new UserNotFoundException("No such entity"));
     }
+
+
 }
