@@ -1,6 +1,6 @@
 package com.mg.apidemo.controllers;
 
-import com.mg.apidemo.exceptions.EntityNotFoundException;
+import com.mg.apidemo.exceptions.UserNotFoundException;
 import com.mg.apidemo.entities.UserEntity;
 import com.mg.apidemo.repositories.UserEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public UserEntity getUserById(@PathVariable Integer id) throws EntityNotFoundException {
-        return userEntityRepository.getUserEntityById(id).orElseThrow(() -> new EntityNotFoundException("No such entity"));
+    public UserEntity getUserById(@PathVariable Integer id) throws UserNotFoundException {
+        return userEntityRepository.getUserEntityById(id).orElseThrow(() -> new UserNotFoundException("No such entity"));
     }
 }
