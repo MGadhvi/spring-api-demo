@@ -31,9 +31,11 @@ public class UserController {
             List<UserEntity> userEntityByName = userEntityRepository.getUserEntityByName(name);
 
             for (UserEntity userEntity : userEntityByName) {
-                usersByName.add(userEntity);
+                if (userEntity.getName().contains(name)) {
+                    usersByName.add(userEntity);
+                }
+                return usersByName;
             }
-            return usersByName;
         }
     }
 
