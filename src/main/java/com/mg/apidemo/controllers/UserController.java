@@ -26,17 +26,17 @@ public class UserController {
     public List<UserEntity> getAllUsers(@RequestParam(required = false) String name) {
         if (name == null) {
             return userEntityRepository.findAll();
-        } else {
-            List<UserEntity> usersByName = new ArrayList<>();
-            List<UserEntity> userEntityByName = userEntityRepository.getUserEntityByName(name);
-
-            for (UserEntity userEntity : userEntityByName) {
-                if (userEntity.getName().contains(name)) {
-                    usersByName.add(userEntity);
-                }
-                return usersByName;
-            }
         }
+
+            List<UserEntity> usersFoundByName = new ArrayList<>();
+
+
+            for (UserEntity userEntity : userEntityRepository.findAll()) {
+                if (userEntity.getName().contains(name)) {
+                    usersFoundByName.add(userEntity);
+                }
+            }
+        return usersFoundByName;
     }
 
     @GetMapping("/user/{id}")
